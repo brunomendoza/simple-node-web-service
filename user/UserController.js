@@ -39,12 +39,15 @@ router.get('/:id', function(req, res) {
 });
 
 router.delete('/:id', function(req, res) {
-  User.findIdAndRemove(req.params.id, function(err, user) {
+  User.findByIdAndRemove(req.params.id, function(err, user) {
     if (err) return res.status(500).send("There was a problem deleting the user.");
     res.status(200).response("User " + user.name + " was deleted.");
   });
 });
 
+// Second parameter will already be parsed correctly with by the middleware
+// we required.
+// Third parameter indicate what version of user you want to send.
 router.put('/:id', function(req, res) {
   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function(err, user) {
     if (err) return res.status(500).send("There was a problem updating the user.");

@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 
 // The body-parser module is used as a middleware
 // to handle data in a more elegant way
-router.use(bodyParser.urlenconded({ extended: true }));
+router.use(bodyParser.urlencoded({ extended: true }));
 
 var User = require('./User');
 
